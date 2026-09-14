@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>For My Favorite Person</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Caveat:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   EDIT ME FIRST — everything you need to personalize is here.
+   Scroll to the bottom of the CSS / top of the HTML body for
+   text, names and photos. Everything else is just styling.
+   ============================================================ */
+
+:root{
+  --pink-bg: #fff4f8;
+  --pink-card: #ffffff;
+  --pink-main: #ef8fb3;
+  --pink-deep: #d9628f;
+  --pink-line: #f6cbdd;
+  --rose-text: #7a2e46;
+  --rose-soft: #a35b78;
+  --gold: #f2b979;
+  --shadow: 0 10px 30px rgba(217,98,143,0.15);
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin:0;
+  background: var(--pink-bg);
+  color: var(--rose-text);
+  font-family: 'Quicksand', sans-serif;
+  overflow-x: hidden;
+}
+
+/* floating hearts background */
+.hearts{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.heart{
+  position: absolute;
+  bottom: -10%;
+  font-size: 22px;
+  color: var(--pink-line);
+  opacity: 0.8;
+  animation: floatUp linear infinite;
+}
+@keyframes floatUp{
+  0%{ transform: translateY(0) translateX(0) rotate(0deg); opacity:0; }
+  10%{ opacity:0.8; }
+  90%{ opacity:0.6; }
+  100%{ transform: translateY(-115vh) translateX(20px) rotate(25deg); opacity:0; }
+}
+
+section{
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 24px;
+}
+.hero .eyebrow{
+  font-family: 'Caveat', cursive;
+  font-size: 26px;
+  color: var(--pink-deep);
+  margin-bottom: 6px;
+}
+.hero h1{
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: clamp(38px, 9vw, 68px);
+  line-height: 1.1;
+  margin: 0 0 18px;
+  color: var(--rose-text);
+}
+.hero h1 span{
+  display:block;
+  color: var(--pink-deep);
+  font-style: italic;
+  font-weight: 500;
+}
+.hero p.sub{
+  font-size: 18px;
+  color: var(--rose-soft);
+  max-width: 420px;
+  margin: 0 auto 34px;
+  line-height: 1.6;
+}
+.scroll-cue{
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  color: var(--pink-deep);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+}
+.scroll-cue .arrow{
+  width: 10px; height: 10px;
+  border-right: 2px solid var(--pink-deep);
+  border-bottom: 2px solid var(--pink-deep);
+  transform: rotate(45deg);
+  animation: bob 1.6s ease-in-out infinite;
+}
+@keyframes bob{
+  0%,100%{ transform: translateY(0) rotate(45deg); }
+  50%{ transform: translateY(6px) rotate(45deg); }
+}
+
+/* ---------- LETTER ---------- */
+.letter{
+  background: var(--pink-card);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  padding: 46px 36px;
+  border: 1px solid var(--pink-line);
+}
+.letter .label{
+  font-family: 'Caveat', cursive;
+  color: var(--pink-deep);
+  font-size: 22px;
+  margin-bottom: 10px;
+  display:block;
+}
+.letter blockquote{
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(22px, 4vw, 28px);
+  line-height: 1.5;
+  margin: 0 0 22px;
+  color: var(--rose-text);
+}
+.letter p{
+  font-size: 16.5px;
+  line-height: 1.85;
+  color: var(--rose-soft);
+  margin: 0 0 16px;
+}
+.letter .sign{
+  font-family: 'Caveat', cursive;
+  font-size: 26px;
+  color: var(--pink-deep);
+  text-align: right;
+  margin-top: 24px;
+}
+
+/* ---------- GALLERY ---------- */
+.gallery-heading{
+  text-align:center;
+  margin-bottom: 40px;
+}
+.gallery-heading .label{
+  font-family: 'Caveat', cursive;
+  color: var(--pink-deep);
+  font-size: 22px;
+}
+.gallery-heading h2{
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: clamp(28px, 5vw, 38px);
+  margin: 4px 0 0;
+}
+.gallery{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+.polaroid{
+  background: #fff;
+  padding: 12px 12px 46px;
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  transform: rotate(var(--tilt, -2deg));
+  transition: transform 0.25s ease;
+  position: relative;
+}
+.polaroid:hover{ transform: rotate(0deg) scale(1.02); }
+.polaroid:nth-child(2n){ --tilt: 2.5deg; }
+.polaroid:nth-child(3n){ --tilt: -3deg; }
+.polaroid .frame{
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 3px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--pink-line), #ffe1ec);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.polaroid .frame img{
+  width:100%; height:100%; object-fit: cover; display:block;
+}
+.polaroid .frame .placeholder{
+  font-family: 'Caveat', cursive;
+  font-size: 15px;
+  color: var(--pink-deep);
+  text-align:center;
+  padding: 10px;
+  line-height:1.4;
+}
+.polaroid .caption{
+  position:absolute;
+  bottom: 12px;
+  left: 0; right:0;
+  text-align:center;
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  color: var(--rose-text);
+}
+.polaroid.wide{ grid-column: span 2; }
+.polaroid.wide .frame{ aspect-ratio: 2.2 / 1; }
+
+@media (max-width: 520px){
+  .gallery{ grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .polaroid.wide{ grid-column: span 2; }
+}
+
+/* ---------- BIRTHDAY BLOCK ---------- */
+.birthday{
+  text-align:center;
+}
+.birthday .cake{ font-size: 48px; margin-bottom: 10px; }
+.birthday .label{
+  font-family: 'Caveat', cursive;
+  color: var(--pink-deep);
+  font-size: 22px;
+}
+.birthday h2{
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: clamp(28px, 6vw, 42px);
+  margin: 6px 0 18px;
+}
+.birthday p{
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--rose-soft);
+  max-width: 480px;
+  margin: 0 auto 30px;
+}
+.wish-btn{
+  display:inline-block;
+  background: var(--pink-main);
+  color: #fff;
+  border: none;
+  padding: 15px 34px;
+  border-radius: 999px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(217,98,143,0.35);
+  transition: transform 0.15s ease;
+}
+.wish-btn:active{ transform: scale(0.96); }
+.reveal{
+  margin-top: 22px;
+  font-family: 'Caveat', cursive;
+  font-size: 24px;
+  color: var(--pink-deep);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease, max-height 0.5s ease, margin 0.5s ease;
+}
+.reveal.show{
+  opacity: 1;
+  max-height: 200px;
+  margin-top: 22px;
+}
+
+/* ---------- FOOTER ---------- */
+footer{
+  text-align:center;
+  padding: 50px 24px 70px;
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  color: var(--pink-deep);
+}
+footer .heart-row{ margin-bottom: 10px; font-size: 22px; letter-spacing: 8px; }
+
+</style>
+</head>
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<!-- ============================================================
+     HERO — change the name, dates, and top message here
+     ============================================================ -->
+<section class="hero">
+  <span class="eyebrow">a little something for you</span>
+  <h1>Happy Birthday<span>My Love</span></h1>
+  <p class="sub">I made you this instead of a normal card — scroll down, there's a letter, some of my favorite photos of us, and a wish for you.</p>
+  <div class="scroll-cue">keep going<div class="arrow"></div></div>
+</section>
+
+<!-- ============================================================
+     LOVE LETTER — replace the quote and paragraph with your own words
+     ============================================================ -->
+<section>
+  <div class="letter">
+    <span class="label">a note, just for you</span>
+    <blockquote>"Of all the things my hands have held, the best, by far, is you."</blockquote>
+    <p>I wanted to make you something with my own hands instead of just buying you something, because none of the shops sell what I actually want to give you — which is every version of you I've ever fallen for, all over again, on your birthday.</p>
+    <p>You make ordinary days feel like something worth remembering. Here's to another year of being impossibly lucky that you picked me.</p>
+    <div class="sign">— always yours</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PHOTO GALLERY
+     Replace src="" with your own photo paths, e.g. "photos/1.jpg"
+     and put matching files next to this index.html file.
+     Change the captions to match each memory.
+     Add/remove <div class="polaroid"> blocks for more or fewer photos.
+     Make any one photo full-width by adding class="polaroid wide"
+     ============================================================ -->
+<section>
+  <div class="gallery-heading">
+    <span class="label">a few of my favorites</span>
+    <h2>Us, lately</h2>
+  </div>
+  <div class="gallery">
+
+    <div class="polaroid">
+      <div class="frame">
+        <img src="photo1.jpg" alt="Photo 1" onerror="this.parentElement.innerHTML='&lt;div class=&quot;placeholder&quot;&gt;put photo1.jpg&lt;br&gt;next to this file&lt;/div&gt;'">
+      </div>
+      <div class="caption">that day at the beach</div>
+    </div>
+
+    <div class="polaroid">
+      <div class="frame">
+        <img src="photo2.jpg" alt="Photo 2" onerror="this.parentElement.innerHTML='&lt;div class=&quot;placeholder&quot;&gt;put photo2.jpg&lt;br&gt;next to this file&lt;/div&gt;'">
+      </div>
+      <div class="caption">your favorite dinner spot</div>
+    </div>
+
+    <div class="polaroid">
+      <div class="frame">
+        <img src="photo3.jpg" alt="Photo 3" onerror="this.parentElement.innerHTML='&lt;div class=&quot;placeholder&quot;&gt;put photo3.jpg&lt;br&gt;next to this file&lt;/div&gt;'">
+      </div>
+      <div class="caption">movie night</div>
+    </div>
+
+    <div class="polaroid">
+      <div class="frame">
+        <img src="photo4.jpg" alt="Photo 4" onerror="this.parentElement.innerHTML='&lt;div class=&quot;placeholder&quot;&gt;put photo4.jpg&lt;br&gt;next to this file&lt;/div&gt;'">
+      </div>
+      <div class="caption">the trip we still talk about</div>
+    </div>
+
+    <div class="polaroid wide">
+      <div class="frame">
+        <img src="photo5.jpg" alt="Photo 5" onerror="this.parentElement.innerHTML='&lt;div class=&quot;placeholder&quot;&gt;put photo5.jpg&lt;br&gt;next to this file&lt;/div&gt;'">
+      </div>
+      <div class="caption">my favorite picture of us</div>
+    </div>
+
+    <div class="polaroid">
+      <div class="frame">
+        <img src="photo6.jpg" alt="Photo 6" onerror="this.parentElement.innerHTML='&lt;div class=&quot;placeholder&quot;&gt;put photo6.jpg&lt;br&gt;next to this file&lt;/div&gt;'">
+      </div>
+      <div class="caption">just because</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     BIRTHDAY WISH — edit the message and the hidden reveal text
+     ============================================================ -->
+<section class="birthday">
+  <div class="cake">🎂</div>
+  <span class="label">before you go</span>
+  <h2>Happy birthday, beautiful.</h2>
+  <p>I hope this year gives you everything you deserve — and I hope I get to be there for all of it. Tap below for one more thing.</p>
+  <button class="wish-btn" onclick="document.getElementById('secret').classList.toggle('show')">tap for a secret</button>
+  <div class="reveal" id="secret">p.s. I love you more than this website can say. 💗</div>
+</section>
+
+<footer>
+  <div class="heart-row">♥ ♥ ♥</div>
+  made with love, for you
+</footer>
+
+<script>
+// gentle floating hearts in the background
+const container = document.getElementById('hearts');
+const symbols = ['♥','❀','✿'];
+for(let i=0;i<16;i++){
+  const el = document.createElement('div');
+  el.className = 'heart';
+  el.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+  el.style.left = Math.random()*100 + 'vw';
+  el.style.fontSize = (14 + Math.random()*16) + 'px';
+  el.style.animationDuration = (10 + Math.random()*10) + 's';
+  el.style.animationDelay = (Math.random()*10) + 's';
+  container.appendChild(el);
+}
+</script>
+
+</body>
+</html>
